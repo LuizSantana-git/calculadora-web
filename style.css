@@ -1,0 +1,82 @@
+body {
+    background-color: gray;
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+
+.container{
+    background-color: rgb(170, 172, 170);
+    margin:auto;
+    margin-top: 50px;
+    padding: 20px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 20px 15px 30px 10px rgb(64, 64, 64,1),
+        inset -7px -5px 3px 3px rgb(64, 64, 64, 0.5);
+
+}
+
+.visor{
+    width: 85%;
+    color:green;
+    background-color: black;
+    margin:auto;
+    padding: 8px;
+    padding-right: 3.5px;
+    font-size: 3.5em;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    border:8px solid rgb(166, 180, 180,0.6);
+    border-radius: 15px;
+    text-shadow: 0px 0px 10px rgb(0,255,0,0.5);
+    box-shadow: inset 15px 15px 30px 10px rgb(255,255,255,0.2);
+}
+
+.container_teclas{
+    width: 95%;
+    background-color: grey;
+    margin: auto;
+    margin-top: 20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 0.7fr;
+    box-shadow: inset 1px 3px 3px 3px rgb(0, 0, 0,0.35);
+    border: 5px solid rgb(170, 172, 170);
+    border-radius: 15px;
+}
+
+.tecla{
+    background-color: rgb(180, 180, 180);
+    margin: 10px;
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 1.8em;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 2px 2px 3px 3px rgb(0,0,0,0.4);
+}
+
+.tecla_especial{
+    background-color: rgb(166, 180, 180);
+    margin: 10px;
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 1.8em;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 2px 2px 3px 3px rgb(0,0,0,0.5);
+}
+
+.tecla:active{
+    padding-top: 12px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 6px;
+    box-shadow: 2px 2px 1px 1px rgb(0,0,0,0.5);
+}
+
+.tecla_especial:active{
+    padding-top: 12px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 6px;
+    box-shadow: 2px 2px 1px 1px rgb(0,0,0,0.5);
+}
