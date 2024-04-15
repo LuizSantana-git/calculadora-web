@@ -96,7 +96,7 @@ class Calculadora {
                 break;
             case this.operacoes.MULTIPLICACAO:
                 resultado = num1 * num2;
-                resultado = parseFloat(resultado.toFixed(10));  // Arredonda o resultado para 10 casas decimais para evitar os erros ao multiplicar floating points.
+                resultado = parseFloat(resultado.toFixed(7));  // Arredonda o resultado para evitar os erros ao multiplicar floating points.
                 break;
             case this.operacoes.DIVISAO:
                 if (num2 == 0) {
