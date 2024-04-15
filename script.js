@@ -11,14 +11,17 @@ class Calculadora {
         this.pontoDecimal = false;
 
         this.segundoNumero = false;
-        
-        //ENUM em javascript operações disponiveis.
+
+        //ENUM em javascript. operações disponiveis.
         this.operacoes = {
             NOP: 0,
             SOMA: 1,
             SUBTRACAO: 2,
             MULTIPLICACAO: 3,
-            DIVISAO: 4
+            DIVISAO: 4,
+            MOD: 5,
+            EXP: 6,
+            RAIZ: 7
         }
 
         this.operacaoSelecionada = this.operacoes.NOP;
@@ -44,6 +47,15 @@ class Calculadora {
             case '*':
                 this.operacaoSelecionada = this.operacoes.MULTIPLICACAO;
                 break;
+            case 'mod':
+                this.operacaoSelecionada = this.operacoes.MOD;
+                break;
+            case 'exp':
+                    this.operacaoSelecionada = this.operacoes.EXP;
+                    break;
+            case 'raiz':
+                    this.operacaoSelecionada = this.operacoes.RAIZ;
+                    break;
         }
         this.memoriaAuxiliar = this.numeroVisor;
     }
@@ -93,6 +105,21 @@ class Calculadora {
                 }
                 resultado = num1 / num2;
                 break;
+            case this.operacoes.MOD:
+                resultado = num1%num2;
+                break; 
+            case this.operacoes.EXP:
+                resultado = num1**num2;
+                break;
+                case this.operacoes.RAIZ: //o segundo numero indica o grau da raíz.
+                    if (num1 < 0 && num2 % 2 === 0) // não há raiz real de um número negativo quando o grau da raiz é par.
+                     {
+                        this.estadoDeErro = true;
+                        this.numeroVisor = 'ERRO!';
+                        return;
+                    }
+                    resultado = Math.pow(num1, 1/num2);
+                    break;
         }
         this.operacaoSelecionada = this.operacoes.NOP;
         this.pontoDecimal = false;
@@ -106,13 +133,13 @@ class Calculadora {
         this.numeroVisor = '0';
         this.pontoDecimal = false;
         this.segundoNumero = false;
-        this.operacaoSelecionada = this.op.NOP;
+        this.operacaoSelecionada = this.operacoes.NOP;
         this.memoriaAuxiliar = '';
         this.estadoDeErro = false;
     }
 
-     // tecla M+ : acrescenta à memória o número no visor
-     teclaMmais() {
+    // tecla M+ : acrescenta à memória o número no visor
+    teclaMmais() {
         if (this.estadoDeErro) return;
         this.memoria += parseFloat(this.numeroVisor);
     }
@@ -192,6 +219,8 @@ let teclaRM = () => {
 let teclaCLM = () => {
     calculadora.teclaCLM();
 }
+
+
 
 // ===================================================================
 //  INÍCIO DO PROCESSAMENTO

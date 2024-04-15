@@ -15,34 +15,42 @@
         </div>
 
         <div class="container_teclas">
-            <div onclick="" class="tecla_especial">C</div>
-            <div onclick="" class="tecla_especial">CLM</div>
-            <div onclick="" class="tecla_especial">S/F</div>
-            <div onclick="" class="tecla_especial">S/F</div>
-            <div onclick="" class="tecla_especial">RM</div>
-            <div onclick="" class="tecla_especial">M+</div>
-            <div onclick="" class="tecla_especial">M-</div>
-            <div onclick="" class="tecla_especial">/</div>
-            <div onclick="" class="tecla">7</div>
-            <div onclick="" class="tecla">8</div>
-            <div onclick="" class="tecla">9</div>
-            <div onclick="" class="tecla_especial">x</div>
-            <div onclick="" class="tecla">4</div>
-            <div onclick="" class="tecla">5</div>
-            <div onclick="" class="tecla">6</div>
-            <div onclick="" class="tecla_especial">-</div>
-            <div onclick="" class="tecla">1</div>
-            <div onclick="" class="tecla">2</div>
-            <div onclick="" class="tecla">3</div>
-            <div onclick="" class="tecla_especial">+</div>
-            <div onclick="" class="tecla_especial">.</div>
-            <div onclick="" class="tecla">0</div>
-            <div onclick="" class="tecla_especial">%</div>
-            <div onclick="" class="tecla_especial">=</div>
+            <div onclick="teclaC()" class="tecla_especial">C</div>
+            <div onclick="teclaCLM()" class="tecla_especial">CLM</div>
+            <div onclick="defOp('exp')" class="tecla_especial">exp</div> 
+            <div onclick="defOp('raiz')" class="tecla_especial">&radic;</div> 
+            <div onclick="teclaRM()" class="tecla_especial">RM</div>
+            <div onclick="teclaMmais()" class="tecla_especial">M+</div>
+            <div onclick="teclaMmenos()" class="tecla_especial">M-</div> 
+            <div onclick="defOp('/')" class="tecla_especial">/</div>
+            <div onclick="digito('7')" class="tecla">7</div> 
+            <div onclick="digito('8')" class="tecla">8</div> 
+            <div onclick="digito('9')" class="tecla">9</div> 
+            <div onclick="defOp('*')" class="tecla_especial">x</div>
+            <div onclick="digito('4')" class="tecla">4</div> 
+            <div onclick="digito('5')" class="tecla">5</div> 
+            <div onclick="digito('6')" class="tecla">6</div> 
+            <div onclick="defOp('-')" class="tecla_especial">-</div>
+            <div onclick="digito('1')" class="tecla">1</div> 
+            <div onclick="digito('2')" class="tecla">2</div> 
+            <div onclick="digito('3')" class="tecla">3</div> 
+            <div onclick="defOp('+')" class="tecla_especial">+</div> 
+            <div onclick="digito('.')" class="tecla_especial">.</div> 
+            <div onclick="digito('0')" class="tecla">0</div> 
+            <div onclick="defOp('mod')" class="tecla_especial">%</div> 
+            <div onclick="igual()" class="tecla_especial">=</div>
         </div>
+
     </div>
 
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        mostraVisor(); //fiquei mais tempo ponderando porque diabos a calculadora não estava iniciando com zero do que eu gostaria de admitir.
+    });
+</script>
+
 
 <script src="script.js"></script>
 
