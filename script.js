@@ -20,8 +20,10 @@ class Calculadora {
             MULTIPLICACAO: 3,
             DIVISAO: 4,
             MOD: 5,
-            EXP: 6,
-            RAIZ: 7
+            //EXP: 6,
+            //RAIZ: 7
+            // as operações raiz e exp foram removidas do sistema de apertar a tecla "=", e agora diretamente exibem o resultado na tela
+            // e assumem que o grau da raiz e expoente da potencia sejam 2.
         }
 
         this.operacaoSelecionada = this.operacoes.NOP;
