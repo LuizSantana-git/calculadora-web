@@ -50,12 +50,13 @@ class Calculadora {
             case 'mod':
                 this.operacaoSelecionada = this.operacoes.MOD;
                 break;
-            case 'exp':
-                    this.operacaoSelecionada = this.operacoes.EXP;
-                    break;
-            case 'raiz':
-                    this.operacaoSelecionada = this.operacoes.RAIZ;
-                    break;
+            /*case 'exp':
+                   this.operacaoSelecionada = this.operacoes.EXP;
+                   break;
+           case 'raiz':
+                   this.operacaoSelecionada = this.operacoes.RAIZ;
+                   break;*/
+            //comentei porque os requisitos ditam que as operação de raiz e exp assumam que o grau da raiz e expoente sejam 2.
         }
         this.memoriaAuxiliar = this.numeroVisor;
     }
@@ -107,20 +108,25 @@ class Calculadora {
                 resultado = num1 / num2;
                 break;
             case this.operacoes.MOD:
-                resultado = num1%num2;
-                break; 
-            case this.operacoes.EXP:
-                resultado = num1**num2;
+                resultado = num1 % num2;
                 break;
-                case this.operacoes.RAIZ: //o segundo numero indica o grau da raíz.
-                    if (num1 < 0 && num2 % 2 === 0) // não há raiz real de um número negativo quando o grau da raiz é par.
-                     {
-                        this.estadoDeErro = true;
-                        this.numeroVisor = 'ERRO!';
-                        return;
-                    }
-                    resultado = Math.pow(num1, 1/num2);
-                    break;
+
+            /*
+        case this.operacoes.EXP:
+            resultado = num1**num2;
+            break;
+            case this.operacoes.RAIZ: //o segundo numero indica o grau da raíz.
+                if (num1 < 0 && num2 % 2 === 0) // não há raiz real de um número negativo quando o grau da raiz é par.
+                 {
+                    this.estadoDeErro = true;
+                    this.numeroVisor = 'ERRO!';
+                    return;
+                }
+                resultado = Math.pow(num1, 1/num2);
+                break;
+            */
+            //comentei porque os requisitos ditam que as operação de raiz e exp assumam que o grau da raiz e expoente sejam 2.
+
         }
         this.operacaoSelecionada = this.operacoes.NOP;
         this.pontoDecimal = false;
@@ -162,6 +168,34 @@ class Calculadora {
         if (this.estadoDeErro) return;
         this.memoria = 0;
     }
+
+    teclaEXP() {
+        if (this.estadoDeErro) return;
+        const resultado = Math.pow(parseFloat(this.numeroVisor), 2);
+        if (resultado.toString().length > 10) {
+            this.estadoDeErro = true;
+            this.numeroVisor = 'ERRO!';
+        } else {
+            this.numeroVisor = resultado.toString();
+        }
+        mostraVisor();  // Atualiza o visor após a operação
+    }
+
+    teclaRAIZ() {
+        if (this.estadoDeErro) return;
+        let numero = parseFloat(this.numeroVisor);
+        if (numero < 0) {
+            this.estadoDeErro = true;
+            this.numeroVisor = 'ERRO!';  // não tem como fazer raiz real de um número negativo
+            mostraVisor();
+            return;
+        }
+        let resultado = Math.sqrt(numero);
+        // Truncar o resultado para no máximo 10 caracteres
+        this.numeroVisor = resultado.toString().slice(0, 10);
+        mostraVisor();  // Atualiza o visor após a operação
+    }
+    
 }
 
 // ===================================================================
@@ -219,6 +253,17 @@ let teclaRM = () => {
 // APAGA TODO O CONTEÚDO DA MEMÓRIA
 let teclaCLM = () => {
     calculadora.teclaCLM();
+}
+
+//tecla EXP - faz potencia de expoente 2:
+let teclaEXP = () => {
+    calculadora.teclaEXP();
+    mostraVisor();
+}
+
+//tecla RAIZ - faz a raiz de grau 2:
+let teclaRAIZ = () => {
+    calculadora.teclaRAIZ();
 }
 
 
